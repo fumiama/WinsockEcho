@@ -29,35 +29,284 @@ namespace WinsockEcho
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            this.groupBoxLocalProp = new System.Windows.Forms.GroupBox();
+            this.labelLocalSocket = new System.Windows.Forms.Label();
+            this.textBoxLocalSocket = new System.Windows.Forms.TextBox();
+            this.textBoxLocalPort = new System.Windows.Forms.TextBox();
+            this.labelLocalPort = new System.Windows.Forms.Label();
+            this.labelLocalIP = new System.Windows.Forms.Label();
+            this.textBoxLocalIP = new System.Windows.Forms.TextBox();
+            this.buttonLocalBind = new System.Windows.Forms.Button();
+            this.textBoxLocalListen = new System.Windows.Forms.TextBox();
+            this.buttonLocalListen = new System.Windows.Forms.Button();
+            this.groupBoxRemoteProp = new System.Windows.Forms.GroupBox();
+            this.buttonRemotePing = new System.Windows.Forms.Button();
+            this.buttonRemoteConnect = new System.Windows.Forms.Button();
+            this.labelRemoteSocket = new System.Windows.Forms.Label();
+            this.textBoxRemoteSocket = new System.Windows.Forms.TextBox();
+            this.textBoxRemotePort = new System.Windows.Forms.TextBox();
+            this.labelRemotePort = new System.Windows.Forms.Label();
+            this.labelRemoteIP = new System.Windows.Forms.Label();
+            this.textBoxRemoteIP = new System.Windows.Forms.TextBox();
+            this.chartRemoteDelay = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.groupBoxLocalProp.SuspendLayout();
+            this.groupBoxRemoteProp.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartRemoteDelay)).BeginInit();
             this.SuspendLayout();
             // 
-            // groupBox1
+            // groupBoxLocalProp
             // 
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(776, 315);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.groupBoxLocalProp.AutoSize = true;
+            this.groupBoxLocalProp.BackColor = System.Drawing.Color.Transparent;
+            this.groupBoxLocalProp.Controls.Add(this.buttonLocalListen);
+            this.groupBoxLocalProp.Controls.Add(this.textBoxLocalListen);
+            this.groupBoxLocalProp.Controls.Add(this.buttonLocalBind);
+            this.groupBoxLocalProp.Controls.Add(this.labelLocalSocket);
+            this.groupBoxLocalProp.Controls.Add(this.textBoxLocalSocket);
+            this.groupBoxLocalProp.Controls.Add(this.textBoxLocalPort);
+            this.groupBoxLocalProp.Controls.Add(this.labelLocalPort);
+            this.groupBoxLocalProp.Controls.Add(this.labelLocalIP);
+            this.groupBoxLocalProp.Controls.Add(this.textBoxLocalIP);
+            this.groupBoxLocalProp.Font = new System.Drawing.Font("Meiryo UI", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxLocalProp.Location = new System.Drawing.Point(19, 19);
+            this.groupBoxLocalProp.Name = "groupBoxLocalProp";
+            this.groupBoxLocalProp.Size = new System.Drawing.Size(661, 372);
+            this.groupBoxLocalProp.TabIndex = 0;
+            this.groupBoxLocalProp.TabStop = false;
+            this.groupBoxLocalProp.Text = "Local Properties";
+            // 
+            // labelLocalSocket
+            // 
+            this.labelLocalSocket.AutoSize = true;
+            this.labelLocalSocket.Location = new System.Drawing.Point(23, 130);
+            this.labelLocalSocket.Name = "labelLocalSocket";
+            this.labelLocalSocket.Size = new System.Drawing.Size(126, 36);
+            this.labelLocalSocket.TabIndex = 5;
+            this.labelLocalSocket.Text = "SOCKET";
+            // 
+            // textBoxLocalSocket
+            // 
+            this.textBoxLocalSocket.Location = new System.Drawing.Point(155, 127);
+            this.textBoxLocalSocket.Name = "textBoxLocalSocket";
+            this.textBoxLocalSocket.ReadOnly = true;
+            this.textBoxLocalSocket.Size = new System.Drawing.Size(148, 43);
+            this.textBoxLocalSocket.TabIndex = 4;
+            // 
+            // textBoxLocalPort
+            // 
+            this.textBoxLocalPort.Location = new System.Drawing.Point(469, 59);
+            this.textBoxLocalPort.Name = "textBoxLocalPort";
+            this.textBoxLocalPort.Size = new System.Drawing.Size(166, 43);
+            this.textBoxLocalPort.TabIndex = 3;
+            // 
+            // labelLocalPort
+            // 
+            this.labelLocalPort.AutoSize = true;
+            this.labelLocalPort.Location = new System.Drawing.Point(391, 62);
+            this.labelLocalPort.Name = "labelLocalPort";
+            this.labelLocalPort.Size = new System.Drawing.Size(72, 36);
+            this.labelLocalPort.TabIndex = 2;
+            this.labelLocalPort.Text = "port";
+            // 
+            // labelLocalIP
+            // 
+            this.labelLocalIP.AutoSize = true;
+            this.labelLocalIP.Location = new System.Drawing.Point(23, 62);
+            this.labelLocalIP.Name = "labelLocalIP";
+            this.labelLocalIP.Size = new System.Drawing.Size(43, 36);
+            this.labelLocalIP.TabIndex = 1;
+            this.labelLocalIP.Text = "IP";
+            // 
+            // textBoxLocalIP
+            // 
+            this.textBoxLocalIP.Location = new System.Drawing.Point(84, 59);
+            this.textBoxLocalIP.Name = "textBoxLocalIP";
+            this.textBoxLocalIP.Size = new System.Drawing.Size(293, 43);
+            this.textBoxLocalIP.TabIndex = 0;
+            // 
+            // buttonLocalBind
+            // 
+            this.buttonLocalBind.Location = new System.Drawing.Point(339, 125);
+            this.buttonLocalBind.Name = "buttonLocalBind";
+            this.buttonLocalBind.Size = new System.Drawing.Size(296, 60);
+            this.buttonLocalBind.TabIndex = 6;
+            this.buttonLocalBind.Text = "bind";
+            this.buttonLocalBind.UseVisualStyleBackColor = true;
+            this.buttonLocalBind.Click += new System.EventHandler(this.buttonLocalBind_Click);
+            // 
+            // textBoxLocalListen
+            // 
+            this.textBoxLocalListen.Location = new System.Drawing.Point(29, 191);
+            this.textBoxLocalListen.Multiline = true;
+            this.textBoxLocalListen.Name = "textBoxLocalListen";
+            this.textBoxLocalListen.ReadOnly = true;
+            this.textBoxLocalListen.Size = new System.Drawing.Size(440, 139);
+            this.textBoxLocalListen.TabIndex = 7;
+            // 
+            // buttonLocalListen
+            // 
+            this.buttonLocalListen.Location = new System.Drawing.Point(493, 230);
+            this.buttonLocalListen.Name = "buttonLocalListen";
+            this.buttonLocalListen.Size = new System.Drawing.Size(145, 60);
+            this.buttonLocalListen.TabIndex = 8;
+            this.buttonLocalListen.Text = "listen";
+            this.buttonLocalListen.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxRemoteProp
+            // 
+            this.groupBoxRemoteProp.AutoSize = true;
+            this.groupBoxRemoteProp.BackColor = System.Drawing.Color.Transparent;
+            this.groupBoxRemoteProp.Controls.Add(this.chartRemoteDelay);
+            this.groupBoxRemoteProp.Controls.Add(this.buttonRemotePing);
+            this.groupBoxRemoteProp.Controls.Add(this.buttonRemoteConnect);
+            this.groupBoxRemoteProp.Controls.Add(this.labelRemoteSocket);
+            this.groupBoxRemoteProp.Controls.Add(this.textBoxRemoteSocket);
+            this.groupBoxRemoteProp.Controls.Add(this.textBoxRemotePort);
+            this.groupBoxRemoteProp.Controls.Add(this.labelRemotePort);
+            this.groupBoxRemoteProp.Controls.Add(this.labelRemoteIP);
+            this.groupBoxRemoteProp.Controls.Add(this.textBoxRemoteIP);
+            this.groupBoxRemoteProp.Font = new System.Drawing.Font("Meiryo UI", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxRemoteProp.Location = new System.Drawing.Point(19, 419);
+            this.groupBoxRemoteProp.Name = "groupBoxRemoteProp";
+            this.groupBoxRemoteProp.Size = new System.Drawing.Size(661, 585);
+            this.groupBoxRemoteProp.TabIndex = 9;
+            this.groupBoxRemoteProp.TabStop = false;
+            this.groupBoxRemoteProp.Text = "Remote Properties";
+            // 
+            // buttonRemotePing
+            // 
+            this.buttonRemotePing.Location = new System.Drawing.Point(493, 122);
+            this.buttonRemotePing.Name = "buttonRemotePing";
+            this.buttonRemotePing.Size = new System.Drawing.Size(145, 60);
+            this.buttonRemotePing.TabIndex = 8;
+            this.buttonRemotePing.Text = "ping";
+            this.buttonRemotePing.UseVisualStyleBackColor = true;
+            // 
+            // buttonRemoteConnect
+            // 
+            this.buttonRemoteConnect.Location = new System.Drawing.Point(339, 122);
+            this.buttonRemoteConnect.Name = "buttonRemoteConnect";
+            this.buttonRemoteConnect.Size = new System.Drawing.Size(145, 60);
+            this.buttonRemoteConnect.TabIndex = 6;
+            this.buttonRemoteConnect.Text = "connect";
+            this.buttonRemoteConnect.UseVisualStyleBackColor = true;
+            // 
+            // labelRemoteSocket
+            // 
+            this.labelRemoteSocket.AutoSize = true;
+            this.labelRemoteSocket.Location = new System.Drawing.Point(23, 130);
+            this.labelRemoteSocket.Name = "labelRemoteSocket";
+            this.labelRemoteSocket.Size = new System.Drawing.Size(126, 36);
+            this.labelRemoteSocket.TabIndex = 5;
+            this.labelRemoteSocket.Text = "SOCKET";
+            // 
+            // textBoxRemoteSocket
+            // 
+            this.textBoxRemoteSocket.Location = new System.Drawing.Point(155, 127);
+            this.textBoxRemoteSocket.Name = "textBoxRemoteSocket";
+            this.textBoxRemoteSocket.ReadOnly = true;
+            this.textBoxRemoteSocket.Size = new System.Drawing.Size(148, 43);
+            this.textBoxRemoteSocket.TabIndex = 4;
+            // 
+            // textBoxRemotePort
+            // 
+            this.textBoxRemotePort.Location = new System.Drawing.Point(469, 59);
+            this.textBoxRemotePort.Name = "textBoxRemotePort";
+            this.textBoxRemotePort.Size = new System.Drawing.Size(166, 43);
+            this.textBoxRemotePort.TabIndex = 3;
+            // 
+            // labelRemotePort
+            // 
+            this.labelRemotePort.AutoSize = true;
+            this.labelRemotePort.Location = new System.Drawing.Point(391, 62);
+            this.labelRemotePort.Name = "labelRemotePort";
+            this.labelRemotePort.Size = new System.Drawing.Size(72, 36);
+            this.labelRemotePort.TabIndex = 2;
+            this.labelRemotePort.Text = "port";
+            // 
+            // labelRemoteIP
+            // 
+            this.labelRemoteIP.AutoSize = true;
+            this.labelRemoteIP.Location = new System.Drawing.Point(23, 62);
+            this.labelRemoteIP.Name = "labelRemoteIP";
+            this.labelRemoteIP.Size = new System.Drawing.Size(43, 36);
+            this.labelRemoteIP.TabIndex = 1;
+            this.labelRemoteIP.Text = "IP";
+            // 
+            // textBoxRemoteIP
+            // 
+            this.textBoxRemoteIP.Location = new System.Drawing.Point(84, 59);
+            this.textBoxRemoteIP.Name = "textBoxRemoteIP";
+            this.textBoxRemoteIP.Size = new System.Drawing.Size(293, 43);
+            this.textBoxRemoteIP.TabIndex = 0;
+            // 
+            // chartRemoteDelay
+            // 
+            chartArea2.Name = "ChartArea1";
+            this.chartRemoteDelay.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chartRemoteDelay.Legends.Add(legend2);
+            this.chartRemoteDelay.Location = new System.Drawing.Point(29, 205);
+            this.chartRemoteDelay.Name = "chartRemoteDelay";
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chartRemoteDelay.Series.Add(series2);
+            this.chartRemoteDelay.Size = new System.Drawing.Size(606, 338);
+            this.chartRemoteDelay.TabIndex = 9;
+            this.chartRemoteDelay.Text = "delay";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 964);
-            this.Controls.Add(this.groupBox1);
+            this.AutoSize = true;
+            this.BackgroundImage = global::WinsockEcho.Properties.Resources.meguru;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.ClientSize = new System.Drawing.Size(1367, 1023);
+            this.Controls.Add(this.groupBoxRemoteProp);
+            this.Controls.Add(this.groupBoxLocalProp);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "MainForm";
+            this.Padding = new System.Windows.Forms.Padding(16);
             this.Text = "WinsockEcho";
+            this.groupBoxLocalProp.ResumeLayout(false);
+            this.groupBoxLocalProp.PerformLayout();
+            this.groupBoxRemoteProp.ResumeLayout(false);
+            this.groupBoxRemoteProp.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartRemoteDelay)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBoxLocalProp;
+        private System.Windows.Forms.TextBox textBoxLocalIP;
+        private System.Windows.Forms.Label labelLocalIP;
+        private System.Windows.Forms.Label labelLocalPort;
+        private System.Windows.Forms.TextBox textBoxLocalPort;
+        private System.Windows.Forms.Label labelLocalSocket;
+        private System.Windows.Forms.TextBox textBoxLocalSocket;
+        private System.Windows.Forms.Button buttonLocalBind;
+        private System.Windows.Forms.Button buttonLocalListen;
+        private System.Windows.Forms.TextBox textBoxLocalListen;
+        private System.Windows.Forms.GroupBox groupBoxRemoteProp;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartRemoteDelay;
+        private System.Windows.Forms.Button buttonRemotePing;
+        private System.Windows.Forms.Button buttonRemoteConnect;
+        private System.Windows.Forms.Label labelRemoteSocket;
+        private System.Windows.Forms.TextBox textBoxRemoteSocket;
+        private System.Windows.Forms.TextBox textBoxRemotePort;
+        private System.Windows.Forms.Label labelRemotePort;
+        private System.Windows.Forms.Label labelRemoteIP;
+        private System.Windows.Forms.TextBox textBoxRemoteIP;
     }
 }
 
