@@ -1,10 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -48,7 +43,7 @@ namespace WinsockEcho
 
         private string actionmsg;
         private Action msgaction;
-        private Mutex mu = new Mutex();
+        private readonly Mutex mu = new Mutex();
         private void LogListen(string msg)
         {
             mu.WaitOne();
@@ -82,7 +77,7 @@ namespace WinsockEcho
             }
         }
 
-        private void buttonRemotePing_Click(object sender, EventArgs e)
+        private void ButtonRemotePing_Click(object sender, EventArgs e)
         {
             try
             {
@@ -93,7 +88,7 @@ namespace WinsockEcho
                     MessageBox.Show("Invalid Remote Port.", "ERROR");
                     return;
                 }
-                buttonRemotePing.Enabled = false;
+                ButtonRemotePing.Enabled = false;
                 List<int> x = new List<int>();
                 List<int> y = new List<int>();
                 long sum = 0;
@@ -105,12 +100,12 @@ namespace WinsockEcho
                 };
                 Action finish = () =>
                 {
-                    buttonRemotePing.Enabled = true;
+                    ButtonRemotePing.Enabled = true;
                 };
                 new Thread(() => {
                     try
                     {
-                        for (; i < 30; i++)
+                        for (; i < 30 && !IsDisposed; i++)
                         {
                             x.Add(i + 1);
                             long start = GetUnixStampMilli(DateTime.Now);
@@ -122,8 +117,9 @@ namespace WinsockEcho
                             Invoke(action);
                             Thread.Sleep(1000);
                         }
-                        Invoke(finish);
+                        if (IsDisposed) Invoke(finish);
                     } catch (Exception ex) {
+                        if (ex.GetType().Name == "InvalidOperationException") return;
                         MessageBox.Show(ex.Message, ex.GetType().Name);
                         Invoke(finish);
                     }
@@ -132,7 +128,7 @@ namespace WinsockEcho
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, ex.GetType().Name);
-                buttonRemotePing.Enabled = true;
+                ButtonRemotePing.Enabled = true;
             }
         }
 

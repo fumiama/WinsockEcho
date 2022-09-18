@@ -29,9 +29,10 @@ namespace WinsockEcho
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.groupBoxLocalProp = new System.Windows.Forms.GroupBox();
             this.buttonLocalReceive = new System.Windows.Forms.Button();
             this.textBoxLocalListen = new System.Windows.Forms.TextBox();
@@ -44,7 +45,7 @@ namespace WinsockEcho
             this.textBoxLocalIP = new System.Windows.Forms.TextBox();
             this.groupBoxRemoteProp = new System.Windows.Forms.GroupBox();
             this.chartRemoteDelay = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.buttonRemotePing = new System.Windows.Forms.Button();
+            this.ButtonRemotePing = new System.Windows.Forms.Button();
             this.labelRemoteSocket = new System.Windows.Forms.Label();
             this.textBoxRemoteDelay = new System.Windows.Forms.TextBox();
             this.textBoxRemotePort = new System.Windows.Forms.TextBox();
@@ -163,7 +164,7 @@ namespace WinsockEcho
             this.groupBoxRemoteProp.AutoSize = true;
             this.groupBoxRemoteProp.BackColor = System.Drawing.Color.Transparent;
             this.groupBoxRemoteProp.Controls.Add(this.chartRemoteDelay);
-            this.groupBoxRemoteProp.Controls.Add(this.buttonRemotePing);
+            this.groupBoxRemoteProp.Controls.Add(this.ButtonRemotePing);
             this.groupBoxRemoteProp.Controls.Add(this.labelRemoteSocket);
             this.groupBoxRemoteProp.Controls.Add(this.textBoxRemoteDelay);
             this.groupBoxRemoteProp.Controls.Add(this.textBoxRemotePort);
@@ -180,34 +181,34 @@ namespace WinsockEcho
             // 
             // chartRemoteDelay
             // 
-            chartArea4.Name = "ChartArea1";
-            this.chartRemoteDelay.ChartAreas.Add(chartArea4);
-            legend4.DockedToChartArea = "ChartArea1";
-            legend4.Enabled = false;
-            legend4.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Column;
-            legend4.Name = "Legend1";
-            this.chartRemoteDelay.Legends.Add(legend4);
+            chartArea2.Name = "ChartArea1";
+            this.chartRemoteDelay.ChartAreas.Add(chartArea2);
+            legend2.DockedToChartArea = "ChartArea1";
+            legend2.Enabled = false;
+            legend2.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Column;
+            legend2.Name = "Legend1";
+            this.chartRemoteDelay.Legends.Add(legend2);
             this.chartRemoteDelay.Location = new System.Drawing.Point(29, 188);
             this.chartRemoteDelay.Name = "chartRemoteDelay";
-            series4.ChartArea = "ChartArea1";
-            series4.IsVisibleInLegend = false;
-            series4.Label = "#VAL";
-            series4.Legend = "Legend1";
-            series4.Name = "Delay(ms)";
-            this.chartRemoteDelay.Series.Add(series4);
+            series2.ChartArea = "ChartArea1";
+            series2.IsVisibleInLegend = false;
+            series2.Label = "#VAL";
+            series2.Legend = "Legend1";
+            series2.Name = "Delay(ms)";
+            this.chartRemoteDelay.Series.Add(series2);
             this.chartRemoteDelay.Size = new System.Drawing.Size(606, 355);
             this.chartRemoteDelay.TabIndex = 9;
             this.chartRemoteDelay.Text = "delay";
             // 
-            // buttonRemotePing
+            // ButtonRemotePing
             // 
-            this.buttonRemotePing.Location = new System.Drawing.Point(339, 122);
-            this.buttonRemotePing.Name = "buttonRemotePing";
-            this.buttonRemotePing.Size = new System.Drawing.Size(299, 60);
-            this.buttonRemotePing.TabIndex = 8;
-            this.buttonRemotePing.Text = "ping";
-            this.buttonRemotePing.UseVisualStyleBackColor = true;
-            this.buttonRemotePing.Click += new System.EventHandler(this.buttonRemotePing_Click);
+            this.ButtonRemotePing.Location = new System.Drawing.Point(339, 122);
+            this.ButtonRemotePing.Name = "ButtonRemotePing";
+            this.ButtonRemotePing.Size = new System.Drawing.Size(299, 60);
+            this.ButtonRemotePing.TabIndex = 8;
+            this.ButtonRemotePing.Text = "ping";
+            this.ButtonRemotePing.UseVisualStyleBackColor = true;
+            this.ButtonRemotePing.Click += new System.EventHandler(this.ButtonRemotePing_Click);
             // 
             // labelRemoteSocket
             // 
@@ -270,6 +271,7 @@ namespace WinsockEcho
             this.Controls.Add(this.groupBoxLocalProp);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = global::WinsockEcho.Properties.Resources.splash_flower;
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Padding = new System.Windows.Forms.Padding(16);
@@ -298,7 +300,7 @@ namespace WinsockEcho
         private System.Windows.Forms.TextBox textBoxLocalListen;
         private System.Windows.Forms.GroupBox groupBoxRemoteProp;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartRemoteDelay;
-        private System.Windows.Forms.Button buttonRemotePing;
+        private System.Windows.Forms.Button ButtonRemotePing;
         private System.Windows.Forms.Label labelRemoteSocket;
         private System.Windows.Forms.TextBox textBoxRemoteDelay;
         private System.Windows.Forms.TextBox textBoxRemotePort;
