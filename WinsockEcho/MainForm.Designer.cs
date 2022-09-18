@@ -29,9 +29,9 @@ namespace WinsockEcho
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.groupBoxLocalProp = new System.Windows.Forms.GroupBox();
             this.buttonLocalReceive = new System.Windows.Forms.Button();
             this.textBoxLocalListen = new System.Windows.Forms.TextBox();
@@ -180,21 +180,21 @@ namespace WinsockEcho
             // 
             // chartRemoteDelay
             // 
-            chartArea6.Name = "ChartArea1";
-            this.chartRemoteDelay.ChartAreas.Add(chartArea6);
-            legend6.DockedToChartArea = "ChartArea1";
-            legend6.Enabled = false;
-            legend6.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Column;
-            legend6.Name = "Legend1";
-            this.chartRemoteDelay.Legends.Add(legend6);
+            chartArea4.Name = "ChartArea1";
+            this.chartRemoteDelay.ChartAreas.Add(chartArea4);
+            legend4.DockedToChartArea = "ChartArea1";
+            legend4.Enabled = false;
+            legend4.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Column;
+            legend4.Name = "Legend1";
+            this.chartRemoteDelay.Legends.Add(legend4);
             this.chartRemoteDelay.Location = new System.Drawing.Point(29, 188);
             this.chartRemoteDelay.Name = "chartRemoteDelay";
-            series6.ChartArea = "ChartArea1";
-            series6.IsVisibleInLegend = false;
-            series6.Label = "#VAL";
-            series6.Legend = "Legend1";
-            series6.Name = "Delay(ms)";
-            this.chartRemoteDelay.Series.Add(series6);
+            series4.ChartArea = "ChartArea1";
+            series4.IsVisibleInLegend = false;
+            series4.Label = "#VAL";
+            series4.Legend = "Legend1";
+            series4.Name = "Delay(ms)";
+            this.chartRemoteDelay.Series.Add(series4);
             this.chartRemoteDelay.Size = new System.Drawing.Size(606, 355);
             this.chartRemoteDelay.TabIndex = 9;
             this.chartRemoteDelay.Text = "delay";
