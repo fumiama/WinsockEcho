@@ -1,7 +1,7 @@
 # WinsockEcho
 A simple socket ping-pong echo.
 
-![image](https://user-images.githubusercontent.com/41315874/190673793-2fb8c907-9584-42f0-9642-1967ccb7b696.png)
+![image](https://user-images.githubusercontent.com/41315874/190897249-445ff4f3-58c0-4583-8c04-eba6fd65d010.png)
 
 ## C-Binding API
 ```c
