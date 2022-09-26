@@ -6,9 +6,11 @@ A simple socket ping-pong echo.
 ## C-Binding API
 > Minus return value represents an error
 ```c
-int Bind(const char* ip, unsigned short* port); // return socket fd
-int Close();
-int Receive(void (*f) (const char* msg));
-int StopReceive();
-int Ping(const char* ip, unsigned short port);
+int  Init();
+int  Bind(const char* ip, unsigned short* port); // return socket fd
+int  Close();
+int  Receive(void (*f) (const char* msg));
+int  StopReceive();
+int  Ping(const char* ip, unsigned short port);
+void Defer();
 ```

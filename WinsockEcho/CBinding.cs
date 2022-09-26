@@ -24,6 +24,9 @@ namespace WinsockEcho
         [DllImport("kernel32.dll")]
         private extern static bool FreeLibrary(IntPtr lib);
 
+        private delegate int Type_Init();
+        private delegate void Type_Defer();
+        private Type_Defer funcDefer;
         private delegate int Type_Bind(string ip, ref ushort port);
         private Type_Bind funcBind;
         private delegate int Type_Close();
@@ -50,6 +53,15 @@ namespace WinsockEcho
             }
             if (hLib != null)
             {
+                Type_Init funcInit = (Type_Init)Invoke("Init", typeof(Type_Init));
+                int r = funcInit();
+                if (r < 0)
+                {
+                    FreeLibrary(hLib);
+                    nobinding = true;
+                    throw new SystemException("Call funcInit error.");
+                }
+                funcDefer = (Type_Defer)Invoke("Defer", typeof(Type_Defer));
                 funcBind = (Type_Bind)Invoke("Bind", typeof(Type_Bind));
                 funcClose = (Type_Close)Invoke("Close", typeof(Type_Close));
                 funcReceive = (Type_Receive)Invoke("Receive", typeof(Type_Receive));
@@ -60,7 +72,11 @@ namespace WinsockEcho
 
         ~CBinding()
         {
-            if (hLib != null) FreeLibrary(hLib);
+            if (hLib != null)
+            {
+                funcDefer();
+                FreeLibrary(hLib);
+            }
             else if (nobinding && s != null) s.Close();
         }
 

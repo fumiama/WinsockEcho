@@ -10,7 +10,14 @@ namespace WinsockEcho
         private readonly CBinding cb;
         public MainForm(string dllpath)
         {
-            cb = new CBinding(dllpath);
+            try
+            {
+                cb = new CBinding(dllpath);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().Name);
+            }
             InitializeComponent();
         }
 
