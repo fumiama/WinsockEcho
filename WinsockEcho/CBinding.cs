@@ -26,13 +26,13 @@ namespace WinsockEcho
 
         private delegate int Type_Bind(string ip, ref ushort port);
         private Type_Bind funcBind;
-        private delegate void Type_Close(int fd);
+        private delegate int Type_Close();
         private Type_Close funcClose;
-        private delegate void Type_Receive(IntPtr f);
+        private delegate int Type_Receive(IntPtr f);
         private Type_Receive funcReceive;
-        private delegate void Type_StopReceive();
+        private delegate int Type_StopReceive();
         private Type_StopReceive funcStopReceive;
-        private delegate void Type_Ping(string ip, ushort port);
+        private delegate int Type_Ping(string ip, ushort port);
         private Type_Ping funcPing;
 
         public CBinding(string dllpath)
@@ -93,6 +93,7 @@ namespace WinsockEcho
             } else
             {
                 fd = funcBind(ip, ref port);
+                if (fd <= 0) throw new Exception("funcBind error.");
             }
             return fd;
         }
@@ -104,7 +105,11 @@ namespace WinsockEcho
         {
             if (fd == 0) throw new Exception("Dulplicate Close.");
             if (nobinding) s.Close();
-            else funcClose(fd);
+            else
+            {
+                int r = funcClose();
+                if (r < 0) throw new Exception("funcClose error.");
+            }
             fd = 0;
         }
 
@@ -125,7 +130,10 @@ namespace WinsockEcho
                 EndPoint remoteEP = new IPEndPoint(0, 0);
                 s.BeginReceiveFrom(buf, 0, 65535, SocketFlags.None, ref remoteEP, ReceiveCallback(buf, f), remoteEP);
             }
-            else funcReceive(Marshal.GetFunctionPointerForDelegate(f));
+            else
+            {
+                stopRecv = funcReceive(Marshal.GetFunctionPointerForDelegate(f)) < 0;
+            }
         }
 
         private AsyncCallback ReceiveCallback(byte[] buf, Type_LogListen f)
@@ -159,7 +167,11 @@ namespace WinsockEcho
             if (fd == 0) throw new Exception("No Binding.");
             if (stopRecv) return;
             stopRecv = true;
-            if (!nobinding) funcStopReceive();
+            if (!nobinding)
+            {
+                int r = funcStopReceive();
+                if (r < 0) throw new Exception("funcStopReceive error.");
+            }
         }
 
         byte[] pingbuf = new byte[65535];
@@ -176,7 +188,12 @@ namespace WinsockEcho
                 tmp.SendTo(Encoding.Default.GetBytes(DateTime.Now.ToString()), rep);
                 tmp.ReceiveFrom(pingbuf, ref rep);
                 tmp.Close();
-            } else funcPing(ip, port);
+            }
+            else
+            {
+                int r = funcPing(ip, port);
+                if (r < 0) throw new Exception("funcPing error.");
+            }
         }
     }
 }
