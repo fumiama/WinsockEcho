@@ -3,6 +3,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace WinsockChat
@@ -131,6 +132,7 @@ namespace WinsockChat
 
         public delegate void Type_LogListen(string msg);
 
+        private Thread recThread;
         /// <summary>
         /// C signature: void Receive(void (*f) (const char* msg))
         /// </summary>
@@ -148,7 +150,14 @@ namespace WinsockChat
             }
             else
             {
-                stopRecv = funcReceive(Marshal.GetFunctionPointerForDelegate(f)) < 0;
+                recThread = new Thread(() =>{
+                    while (true)
+                    {
+                        funcReceive(Marshal.GetFunctionPointerForDelegate(f));
+                    }
+                    
+                });
+                recThread.Start();
             }
         }
 
@@ -185,8 +194,7 @@ namespace WinsockChat
             stopRecv = true;
             if (!nobinding)
             {
-                int r = funcStopReceive();
-                if (r < 0) throw new Exception("funcStopReceive error.");
+                recThread.Abort();
             }
         }
 
