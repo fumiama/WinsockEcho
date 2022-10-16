@@ -3,7 +3,7 @@ A simple socket ping-pong echo.
 
 ![image](https://user-images.githubusercontent.com/41315874/190897249-445ff4f3-58c0-4583-8c04-eba6fd65d010.png)
 
-## C-Binding API
+## [C-Binding](https://github.com/wa-kakalala/WSEchoDLL) API
 > Minus return value represents an error
 ```c
 int  Init();
