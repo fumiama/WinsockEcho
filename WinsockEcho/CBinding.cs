@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace WinsockChat
+namespace WinsockEcho
 {
     class CBinding
     {
