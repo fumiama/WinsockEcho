@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 
-namespace WinsockEcho
+namespace WinsockChat
 {
     class CBinding
     {
@@ -46,12 +46,12 @@ namespace WinsockEcho
                 return;
             }
             hLib = LoadLibrary(dllpath);
-            if (hLib == null)
+            if (hLib == IntPtr.Zero)
             {
                 nobinding = true;
                 return;
             }
-            if (hLib != null)
+            if (hLib != IntPtr.Zero)
             {
                 Type_Init funcInit = (Type_Init)Invoke("Init", typeof(Type_Init));
                 int r = funcInit();
@@ -72,7 +72,7 @@ namespace WinsockEcho
 
         ~CBinding()
         {
-            if (hLib != null)
+            if (hLib != IntPtr.Zero)
             {
                 funcDefer();
                 FreeLibrary(hLib);
